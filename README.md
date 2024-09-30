@@ -7,7 +7,6 @@ This code implements a basic routing system in PHP, using procedural programming
 
 - Fast
 - Unopinionated
-- Extensible
 - Easy to install and set up
   
 ## Table of Contents
