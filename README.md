@@ -1,7 +1,15 @@
 # SPMF
+<img align="right" width="159px" src="https://c.tenor.com/raV3qC9iOWsAAAAd/tenor.gif">
 
 This code implements a basic routing system in PHP, using procedural programming. It registers routes for different HTTP methods and handles requests accordingly. 
 
+**SPMF's key features are:**
+
+- Fast
+- Unopinionated
+- Extensible
+- Easy to install and set up
+  
 ## Table of Contents
 - [Route Definitions](#route-definitions)
 - [Request Dispatching](#request-dispatching)
