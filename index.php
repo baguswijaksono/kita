@@ -71,10 +71,6 @@ function listen(): void
 
     // Define routes
     get('/', 'home');
-    get('/tag/([\w-]+)', 'handleTag');
-    post('/submit', 'submitForm');
-    put('/update/([\w-]+)', 'updateData');
-    delete('/delete/([\w-]+)', 'deleteData');
 
     // Dispatch the request
     dispatch($url, $method);
@@ -84,26 +80,6 @@ function listen(): void
 function home(): void
 {
     echo "Welcome to the Home Page!";
-}
-
-function handleTag(string $tag): void
-{
-    echo "You are viewing the tag: $tag";
-}
-
-function submitForm(): void
-{
-    echo "Form submitted!";
-}
-
-function updateData(string $id): void
-{
-    echo "Data with ID $id has been updated!";
-}
-
-function deleteData(string $id): void
-{
-    echo "Data with ID $id has been deleted!";
 }
 
 // Start listening for incoming requests
