@@ -1,32 +1,20 @@
 # SPMF
 <img align="right" width="159px" src="https://c.tenor.com/raV3qC9iOWsAAAAd/tenor.gif">
 
-This code implements a basic routing system in PHP, using procedural programming. It registers routes for different HTTP methods and handles requests accordingly. 
+This code implements a basic routing system in PHP, using procedural programming. It registers routes for different HTTP methods and handles requests accordingly.
 
 **SPMF's key features are:**
 
 - Fast
 - Unopinionated
 - Easy to install and set up
-  
+
 ## Table of Contents
 - [Route Definitions](#route-definitions)
 - [Example Handlers](#example-handlers)
 - [How to Use](#how-to-use)
 
 ## Route Definitions
-
-### Global Routes Variable
-```php
-$routes = [
-    'GET' => [],
-    'POST' => [],
-    'PUT' => [],
-    'DELETE' => [],
-];
-```
-This `$routes` variable stores routes for different HTTP methods (GET, POST, PUT, DELETE) in arrays.
-
 ### Functions to Add Routes
 - `get(string $path, callable $handler): void`: Adds a route for the GET method.
 - `post(string $path, callable $handler): void`: Adds a route for the POST method.
@@ -100,10 +88,6 @@ function listen(): void
     // Dispatch the request
     dispatch($url, $method);
 }
-```
 
-Finally, call `listen()` to start the routing system.
-
-```php
+// Finally, call `listen()` to start the routing system.
 listen();
-```
