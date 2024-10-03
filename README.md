@@ -11,7 +11,6 @@ This code implements a basic routing system in PHP, using procedural programming
   
 ## Table of Contents
 - [Route Definitions](#route-definitions)
-- [Request Dispatching](#request-dispatching)
 - [Example Handlers](#example-handlers)
 - [How to Use](#how-to-use)
 
@@ -37,68 +36,6 @@ This `$routes` variable stores routes for different HTTP methods (GET, POST, PUT
 Example:
 ```php
 get('/example', 'exampleHandler');
-```
-
-### Route Registration Code
-```php
-function get(string $path, callable $handler): void
-{
-    global $routes;
-    $routes['GET'][$path] = $handler;
-}
-
-function post(string $path, callable $handler): void
-{
-    global $routes;
-    $routes['POST'][$path] = $handler;
-}
-
-function put(string $path, callable $handler): void
-{
-    global $routes;
-    $routes['PUT'][$path] = $handler;
-}
-
-function delete(string $path, callable $handler): void
-{
-    global $routes;
-    $routes['DELETE'][$path] = $handler;
-}
-```
-
-## Request Dispatching
-
-### `dispatch(string $url, string $method): void`
-
-This function checks if a route matches the current URL and HTTP method. If a match is found, it calls the respective handler function. Otherwise, it returns a 404 or 405 error.
-
-Example:
-```php
-dispatch('/example', 'GET');
-```
-
-```php
-function dispatch(string $url, string $method): void
-{
-    global $routes;
-
-    if (!isset($routes[$method])) {
-        http_response_code(405); // Method Not Allowed
-        echo "Method $method Not Allowed";
-        return;
-    }
-
-    foreach ($routes[$method] as $path => $handler) {
-        if (preg_match("#^$path$#", $url, $matches)) {
-            array_shift($matches); // Remove full match
-            call_user_func_array($handler, $matches);
-            return;
-        }
-    }
-    
-    http_response_code(404);
-    handleNotFound();
-}
 ```
 
 ### 404 Handler
