@@ -9,21 +9,6 @@ $routes = [
     'DELETE' => [],
 ];
 
-function conn()
-{
-    $servername = "localhost";
-    $username = "phpmyadmin";
-    $password = "your_password";
-    $dbname = "skibi";
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    return $conn;
-}
-
 function get(string $path, callable $handler): void
 {
     global $routes;
