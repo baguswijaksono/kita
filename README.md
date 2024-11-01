@@ -4,8 +4,7 @@
 A minimal PHP microframework for handling HTTP routing in a straightforward, procedural approach, similar to a C program.
 
 **KITA's key features are:**
-- Fast
-- Lightweight and unbloated
+- Lightweight, Fast and unbloated
 - Easy control flow
 - Extremely unopinionated
 - Easy to install and set up (consists of just a single file)
