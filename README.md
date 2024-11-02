@@ -7,6 +7,7 @@ A minimal PHP microframework for handling HTTP routing in a straightforward, pro
 - Lightweight, Fast and unbloated
 - Easy control flow
 - Extremely unopinionated
+- Basic Abstraction
 - Easy to install and set up (consists of just a single file)
 
 ```php
