@@ -60,5 +60,11 @@ function handleNotFound(): void
     echo "404 Not Found";
 }
 
+function redirect(string $url): void
+{
+    header("Location: $url");
+    exit;
+}
+
 main();
 dispatch(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), $_SERVER['REQUEST_METHOD']);
