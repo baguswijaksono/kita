@@ -68,36 +68,17 @@ function redirect(string $url): void
     exit;
 }
 
-class Request
+function json(array $data, int $statusCode = 200): void
 {
-    public string $method;
-    public string $url;
-    public array $queryParams;
-    public array $body;
-
-    public function __construct()
-    {
-        $this->method = $_SERVER['REQUEST_METHOD'];
-        $this->url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-        $this->queryParams = $_GET;
-        $this->body = $_POST;
-    }
+    http_response_code($statusCode);
+    header('Content-Type: application/json');
+    echo json_encode($data);
 }
+function send(string $content, int $statusCode = 200): void
 
-class Response
 {
-    public function json(array $data, int $statusCode = 200): void
-    {
-        http_response_code($statusCode);
-        header('Content-Type: application/json');
-        echo json_encode($data);
-    }
-
-    public function send(string $content, int $statusCode = 200): void
-    {
-        http_response_code($statusCode);
-        echo $content;
-    }
+    http_response_code($statusCode);
+    echo $content;
 }
 
 main();
