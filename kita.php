@@ -44,7 +44,9 @@ function dispatch(string $url, string $method): void
     }
 
     foreach ($routes[$method] as $path => $handler) {
-        if (preg_match("#^$path$#", $url, $matches)) {
+        // Convert path with `{param}` to regex
+        $pathRegex = preg_replace('/\{([^\/]+)\}/', '([^\/]+)', $path);
+        if (preg_match("#^$pathRegex$#", $url, $matches)) {
             array_shift($matches);
             call_user_func_array($handler, $matches);
             return;
@@ -64,6 +66,19 @@ function redirect(string $url): void
 {
     header("Location: $url");
     exit;
+}
+
+function json(array $data, int $statusCode = 200): void
+{
+    http_response_code($statusCode);
+    header('Content-Type: application/json');
+    echo json_encode($data);
+}
+function send(string $content, int $statusCode = 200): void
+
+{
+    http_response_code($statusCode);
+    echo $content;
 }
 
 main();
