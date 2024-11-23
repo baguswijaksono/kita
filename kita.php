@@ -81,5 +81,24 @@ function send(string $content, int $statusCode = 200): void
     echo $content;
 }
 
+function loadEnv($filePath)
+{
+    if (!file_exists($filePath)) {
+        return;
+    }
+    $lines = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        $line = trim($line);
+        if ($line === '' || $line[0] === '#') {
+            continue;
+        }
+        list($key, $value) = array_map('trim', explode('=', $line, 2) + [NULL, NULL]);
+        if ($key !== NULL) {
+            $_ENV[$key] = $value;
+            putenv("$key=$value");
+        }
+    }
+}
+
 main();
 dispatch(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), $_SERVER['REQUEST_METHOD']);
