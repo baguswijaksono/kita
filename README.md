@@ -7,9 +7,7 @@ A minimal PHP microframework for handling HTTP routing in a straightforward, pro
 - Lightweight, fast, and minimalistic
 - Simplified control flow with minimal abstraction
 - Extremely flexible and unopinionated
-- Protected against endpoint enumeration tools
 - Easy to install and set up (just a single file)
-
 ```php
 <?php
 require_once 'kita.php';
